@@ -10,7 +10,7 @@ const Header = () => {
       <div className="container header__container">
         <h5>Hello I'm</h5>
         <h1>Tri Ngo</h1>
-        <h5 className="text-light">Software Engineer</h5>
+        <h5 className="text-light">Computer Science Student</h5>
         <CTA />
         <HeaderSocials />
         
@@ -18,7 +18,7 @@ const Header = () => {
           <img src={ME} alt="me" />
         </div>
 
-        <a href="#contact" className='scroll__down'>
+        <a href="#contact" className='scroll__down'> {/* Go straight to contact when click */}
           Scroll Down
         </a>
       </div>
