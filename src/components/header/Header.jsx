@@ -18,7 +18,7 @@ const Header = () => {
           <img src={ME} alt="me" />
         </div>
 
-        <a href="#contact" className='scroll__down'> {/* Go straight to contact when click */}
+        <a href="#contact" className="scroll__down"> {/* Go straight to contact when click */}
           Scroll Down
         </a>
       </div>
