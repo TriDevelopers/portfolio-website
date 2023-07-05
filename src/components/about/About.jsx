@@ -1,6 +1,6 @@
 import React from 'react'
 import './about.css'
-import ME from '../../assets/me-about-1.jpg'
+import ME from '../../assets/me-about.jpg'
 import {HiOutlineCode} from 'react-icons/hi'
 import {VscFolderLibrary} from 'react-icons/vsc'
 

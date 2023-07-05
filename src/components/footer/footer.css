@@ -52,6 +52,14 @@ footer a {
     color: var(--color-bg);
 }
 
+/* ==================== Media Queries (Medium Devices) ====================*/
+
+@media screen and (max-width: 1024px) {
+    .permalinks {
+        gap: 1.5rem;
+    }
+}
+
 /* ==================== Media Queries (Small Devices) ====================*/
 
 @media screen and (max-width: 600px) {
