@@ -1,8 +1,7 @@
 import React from 'react'
 import './about.css'
-import ME from '../../assets/me-about.jpg'
-import {FaAward} from 'react-icons/fa'
-import {FiUsers} from 'react-icons/fi'
+import ME from '../../assets/me-about-1.jpg'
+import {HiOutlineCode} from 'react-icons/hi'
 import {VscFolderLibrary} from 'react-icons/vsc'
 
 const About = () => {
@@ -20,25 +19,23 @@ const About = () => {
 
         <div className="about__content">
           <div className="about__cards">
+            
             <article className="about__card">
-              <FaAward className="about__icon" />
-              <h5>Experience</h5>
-              <small>3+ Years Working</small>
-            </article>
-            <article className="about__card">
-              <FiUsers className="about__icon" />
-              <h5>Clients</h5>
-              <small>200+ Worldwide</small>
+              <HiOutlineCode className="about__icon" />
+              <h5>Area of Interest</h5>
+              <small>Backend Development, CyberSecurity, ML/AI, Blockchain</small>
             </article>
             <article className="about__card">
               <VscFolderLibrary className="about__icon" />
               <h5>Projects</h5>
-              <small>80+ Completed Project</small>
+              <small>5+ Academic, Personal, Professional Completed Projects</small>
             </article>
           </div>
 
           <p>
-            About Me
+            I am a rising senior CS student at the University of Texas - Dallas. My main focus is Backend Development. 
+            I love to explore different field of software development. 
+            I know a bit of everything from Frontend Development, CyberSecurity to ML/AI, Blockchain with main focus in Backend Development.
           </p>
 
           <a href="#contact" className="btn btn-primary">Let's Talk</a>
