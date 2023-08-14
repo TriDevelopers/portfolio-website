@@ -48,7 +48,7 @@ header {
     margin-top: 4rem;
     border-radius: 12rem 12rem 0 0;
     overflow: hidden;
-    padding: 5rem 1.5rem 1.5rem 1.5rem;
+    
 }
 
 /* ==================== Scroll Down ====================*/
@@ -72,6 +72,12 @@ header {
 /* ==================== Media Queries (Small Devices) ====================*/
 
 @media screen and (max-width: 600px) {
+    .me {
+        width: 18rem;
+        height: 20rem;
+        left: calc(50% - 9rem);
+    }
+
     header {
         height: 100vh;
     }
