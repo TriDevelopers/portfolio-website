@@ -11,7 +11,8 @@ const Services = () => {
       <div className="container services__container">
         <article className="services">
           <div className="services__head">
-            <h3>UI/UX Design</h3>
+            <h3>Software Engineer - Volunteer</h3>
+            <h3><a href="https://www.linkedin.com/company/avolta-inc/" target="_blank">@ Avolta Inc.</a></h3>
           </div>
 
           <ul className="services__list">
@@ -32,7 +33,8 @@ const Services = () => {
         {/* End of UI/UX services */}
         <article className="services">
           <div className="services__head">
-            <h3>Web Development</h3>
+            <h3>Software Engineer - Intern</h3>
+            <h3><a href="https://www.linkedin.com/company/svtechnologiesjsc/" target="_blank">@ SVTech</a></h3>
           </div>
 
           <ul className="services__list">
@@ -53,7 +55,8 @@ const Services = () => {
         {/* End of Web services */}
         <article className="services">
           <div className="services__head">
-            <h3>Content Creation</h3>
+            <h3>Tech Fellow</h3>
+            <h3><a href="https://www.linkedin.com/school/codepath-org/" target="_blank">@ CodePath</a></h3>
           </div>
 
           <ul className="services__list">

@@ -33,7 +33,7 @@ const About = () => {
           </div>
 
           <p>
-            I am a rising senior CS student at the University of Texas - Dallas. My main focus is Backend Development. 
+            I am a rising senior CS student at the University of Texas - Dallas planning to pursue a Master's Degree after my Bachelor's. 
             I love to explore different field of software development. 
             I know a bit of everything from Frontend Development, CyberSecurity to ML/AI, Blockchain with main focus in Backend Development.
           </p>

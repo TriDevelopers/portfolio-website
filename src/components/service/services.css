@@ -12,6 +12,10 @@
     transition: var(--transition);
 }
 
+.services a {
+    color: var(--color-bg);
+}
+
 .services:hover {
     background: transparent;
     border-color: var(--color-primary-variant);
