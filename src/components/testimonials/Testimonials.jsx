@@ -2,7 +2,7 @@ import React from 'react'
 import './testimonials.css'
 import LOGO1 from '../../assets/DataFestLogoSMU.png'
 import LOGO2 from '../../assets/J.P.-Morgan-Chase-Logo.png'
-import LOGO3 from '../../assets/CodePath-1.png'
+import LOGO3 from '../../assets/CodePath.png'
 import {FaAward} from 'react-icons/fa'
 
 // import Swiper core and required modules

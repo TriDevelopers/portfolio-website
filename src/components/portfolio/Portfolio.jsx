@@ -1,68 +1,42 @@
 import React from 'react'
 import './portfolio.css'
-import IMG1 from '../../assets/portfolio1.jpg'
-import IMG2 from '../../assets/portfolio2.jpg'
-import IMG3 from '../../assets/portfolio3.jpg'
-import IMG4 from '../../assets/portfolio4.jpg'
-import IMG5 from '../../assets/portfolio5.png'
-import IMG6 from '../../assets/portfolio6.jpg'
-
-// DO NOT USE IMAGE IN PRODUCTION
+import IMG1 from '../../assets/hackdfw.jpg'
+import IMG2 from '../../assets/ASA.jpg'
+import IMG3 from '../../assets/profolio_1.png'
 
 const data = [
   {
     id: 1,
     image: IMG1,
-    title: 'This is a portfolio item title 1',
-    github: 'https://github.com',
-    demo: 'https://github.com'
+    title: 'HackDFW 2022',
+    github: 'https://github.com/orgs/HackDFW-2022-Weather-Things/repositories',
+    presentation: 'https://docs.google.com/presentation/d/1YaWx2d5tiD4lYz7tUEk2GxoHo6yQGAbbE2N85R08zGw/edit?usp=sharing'
   },
   {
     id: 2,
     image: IMG2,
-    title: 'This is a portfolio item title 2',
-    github: 'https://github.com',
-    demo: 'https://github.com'
+    title: 'ASA DataFest 2021',
+    github: 'https://docs.google.com/document/d/1sX6nuQVfyVoAo30yvvbOdfFvL7hfLSR72X5TDc3m5Pg/edit?usp=sharing',
+    presentation: 'https://docs.google.com/presentation/d/1nNxz0vXgXQl2-FDlhiqEWW5GAdAi1pU0YDOzRF9mU00/edit#slide=id.p'
   },
   {
     id: 3,
     image: IMG3,
-    title: 'This is a portfolio item title 3',
-    github: 'https://github.com',
-    demo: 'https://github.com'
-  },
-  {
-    id: 4,
-    image: IMG4,
-    title: 'This is a portfolio item title 4',
-    github: 'https://github.com',
-    demo: 'https://github.com'
-  },
-  {
-    id: 5,
-    image: IMG5,
-    title: 'This is a portfolio item title 5',
-    github: 'https://github.com',
-    demo: 'https://github.com'
-  },
-  {
-    id: 6,
-    image: IMG6,
-    title: 'This is a portfolio item title 6',
-    github: 'https://github.com',
-    demo: 'https://github.com'
+    title: 'Portfolio Website',
+    github: 'https://github.com/TriDevelopers/portfolio-website',
+    presentation: 'https://github.com'
   }
 ]
 
 const Portfolio = () => {
   return (
     <section id='project'>
-      <h5>My Recent Work</h5>
-      <h2>Projects</h2>
+      <h5>My Recent Competitions/Projects</h5>
+      <h2>Activities</h2>
 
       <div className="container portfolio-container">
         {
-          data.map(({ id, image, title, github, demo }) => {
+          data.map(({ id, image, title, github, presentation }) => {
             return (
               <article key={id} className="portfolio__item">
               <div className="portfolio__item-img">
@@ -70,8 +44,8 @@ const Portfolio = () => {
               </div>
               <h3>{title}</h3>
               <div className="portfolio__item-cta">
-                <a href={github} className="btn" target='_blank'>GitHub</a>
-                <a href={demo} className="btn btn-primary" target='_blank'>Live Demo</a>
+                <a href={github} className="btn" target='_blank'>GitHub/Docs</a>
+                <a href={presentation} className="btn btn-primary" target='_blank'>Presentation</a>
               </div>
             </article>
             )
