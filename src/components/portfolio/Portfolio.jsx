@@ -24,7 +24,7 @@ const data = [
     image: IMG3,
     title: 'Portfolio Website',
     github: 'https://github.com/TriDevelopers/portfolio-website',
-    presentation: 'https://github.com'
+    presentation: 'https://tri-ngo-portfolio.netlify.app'
   }
 ]
 
