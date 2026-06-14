@@ -11,8 +11,13 @@
 # production
 /build
 
+# tooling artifacts
+/target
+
 # misc
 .DS_Store
+.idea/
+.vscode/
 .env.local
 .env.development.local
 .env.test.local

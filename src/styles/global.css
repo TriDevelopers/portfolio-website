@@ -1,0 +1,129 @@
+/* ============================================================
+   Tri Ngo — Portfolio (v6 design)
+   Global styles: reset, fonts, keyframes, hover + responsive.
+   Per-element visual styling lives inline in the components so it
+   stays 1:1 with the Claude Design handoff; this file only covers
+   what inline styles can't express.
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #0a0e13;
+  color: #e8edf2;
+  font-family: 'Manrope', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(62, 224, 143, 0.25);
+}
+
+/* ---- keyframes (lifted verbatim from the design) ---- */
+@keyframes blink   { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes pulse   { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(62,224,143,0.5); } 50% { opacity: 0.65; box-shadow: 0 0 0 5px rgba(62,224,143,0); } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes flow    { 0% { left: -12%; opacity: 0; } 14% { opacity: 1; } 86% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+@keyframes dot     { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+@keyframes spin    { to { transform: rotate(360deg); } }
+@keyframes spinrev { to { transform: rotate(-360deg); } }
+@keyframes botbob  { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+@keyframes legA    { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+@keyframes legB    { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(0); } }
+@keyframes growbar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* hide the AI-diagram scrollbar at any width (swipe/drag still works) */
+[data-r="ai-scroll"] { scrollbar-width: none; -ms-overflow-style: none; }
+[data-r="ai-scroll"]::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+/* ---- hover utilities (replace the prototype's style-hover attr) ---- */
+a { color: inherit; }
+
+.nav-link {
+  transition: color .18s ease, background .18s ease;
+}
+.nav-link:hover {
+  color: #e8edf2 !important;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-primary {
+  transition: background .18s ease, transform .18s ease;
+}
+.btn-primary:hover {
+  background: #5cf0a8 !important;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  transition: border-color .18s ease, color .18s ease;
+}
+.btn-ghost:hover {
+  border-color: #3ee08f !important;
+  color: #3ee08f !important;
+}
+
+.proj-card {
+  transition: border-color .25s ease;
+}
+.proj-card:hover {
+  border-color: rgba(62, 224, 143, 0.4) !important;
+}
+
+.closed-row {
+  transition: background .2s ease;
+}
+.closed-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.closed-link {
+  transition: color .18s ease;
+}
+.closed-link:hover {
+  color: #3ee08f !important;
+}
+
+/* ============================================================
+   Responsive — desktop styles are inline (1:1 with the design);
+   these breakpoints only kick in as the screen narrows. Selectors
+   and values mirror the design's [data-r]/[data-pad] system exactly.
+   !important is required to override the carried-over inline styles.
+   ============================================================ */
+/* TABLET */
+@media (max-width: 900px) {
+  [data-r="hero"] { grid-template-columns: 1fr !important; gap: 38px !important; padding-top: 64px !important; }
+  [data-r="hero-h1"] { font-size: clamp(56px, 12vw, 86px) !important; min-height: 0 !important; }
+  [data-r="about"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+  [data-r="about-photo"] { max-width: 300px !important; margin-left: auto !important; margin-right: auto !important; }
+  [data-r="telemetry"] { grid-template-columns: 1fr 1fr !important; }
+  [data-r="projects"] { grid-template-columns: 1fr !important; }
+  [data-r="alloc-row"] { grid-template-columns: 180px 1fr 48px !important; }
+  [data-r="alloc-desc"] { display: none !important; }
+}
+/* PHONE */
+@media (max-width: 560px) {
+  [data-pad] { padding-left: 22px !important; padding-right: 22px !important; }
+  [data-r="navlink"] { display: none !important; }
+  [data-r="hero-h1"] { font-size: clamp(42px, 14vw, 64px) !important; white-space: normal !important; }
+  [data-r="hero"] { padding-top: 52px !important; padding-bottom: 44px !important; }
+  [data-r="sec"] { padding-top: 64px !important; padding-bottom: 64px !important; }
+  [data-r="h2"] { font-size: 30px !important; }
+  [data-r="about-stats"] { grid-template-columns: 1fr 1fr !important; }
+  [data-r="telemetry"] { grid-template-columns: 1fr !important; }
+  [data-r="exp-row"] { grid-template-columns: 1fr !important; gap: 8px !important; }
+  [data-r="exp-rail"] { display: none !important; }
+  [data-r="exp-date"] { text-align: left !important; flex-direction: row !important; align-items: baseline !important; gap: 10px !important; }
+  [data-r="pos-row"] { grid-template-columns: 1fr !important; gap: 4px !important; padding-top: 14px !important; padding-bottom: 14px !important; }
+  [data-r="pos-status"] { text-align: left !important; }
+  [data-r="alloc-row"] { grid-template-columns: 96px 1fr 38px !important; gap: 14px !important; }
+  [data-r="nav-inner"] { padding-left: 18px !important; padding-right: 18px !important; }
+}

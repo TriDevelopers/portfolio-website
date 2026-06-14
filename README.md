@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Tri Ngo — Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A single-page portfolio with a finance-terminal aesthetic: a live "career
+index" candlestick panel, a rotating node-sphere, an append-only experience
+"ledger", an AI-pipeline diagram, and an animated stack-allocation chart.
 
-## Available Scripts
+Built with **React 18** (Create React App). The visual design was prototyped in
+[Claude Design](https://claude.ai/design) and re-implemented here as idiomatic
+React — the prototype's canvas/RAF animations live in dedicated hooks, and the
+exact colors/spacing are kept 1:1 with the design via inline-style components.
 
-In the project directory, you can run:
+## Getting started
 
-### `npm start`
+```bash
+npm install
+npm start        # dev server at http://localhost:3000
+npm run build    # production build into /build
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Architecture
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The codebase is organized by **responsibility**, with absolute imports
+(`jsconfig.json` sets `baseUrl: src`) so files can move without breaking
+imports.
 
-### `npm test`
+```
+src/
+├── index.js                  # entry point (React 18 createRoot)
+├── App.jsx                   # composition root — global effects + section order
+│
+├── theme/
+│   └── tokens.js             # design tokens: fonts (FONT), colors (C), layout (MAXW)
+│
+├── styles/
+│   └── global.css            # reset, @keyframes, hover utilities, responsive rules
+│
+├── assets/
+│   ├── images/               # tri.jpg (headshot)
+│   └── documents/            # Resume.pdf
+│
+├── hooks/                    # one custom hook per file (single responsibility)
+│   ├── index.js              # barrel
+│   ├── useHeroSequence.js    # boot log + name "decrypt"
+│   ├── useCandles.js         # candlestick <canvas>
+│   ├── useLattice.js         # rotating node-sphere <canvas>
+│   ├── useScrollProgress.js  # top progress bar
+│   ├── useReveal.js          # IntersectionObserver scroll-reveal + bar fills
+│   ├── useDragPan.js         # drag-to-pan the AI diagram
+│   └── useKonami.js          # "hodl" easter-egg listener
+│
+└── components/
+    ├── layout/               # chrome that frames the page
+    │   └── Nav.jsx
+    ├── sections/             # the page sections, in on-page order
+    │   ├── index.js          # barrel
+    │   ├── Hero.jsx
+    │   ├── Ticker.jsx
+    │   ├── About.jsx
+    │   ├── Experience.jsx
+    │   ├── AiFlow.jsx
+    │   ├── Projects.jsx
+    │   ├── Allocation.jsx
+    │   └── Contact.jsx
+    └── overlays/             # things rendered above the page
+        └── HodlOverlay.jsx
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Conventions
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Styling** — per-element visual styling is inline (1:1 with the design).
+  `styles/global.css` holds only what inline styles can't express: `@keyframes`,
+  `:hover`, `::selection`, and the responsive `@media` rules. Responsive hooks
+  use `data-r="…"` / `data-pad` attributes that mirror the design's own system.
+- **Animation** — every canvas/observer/listener lives in a hook that captures
+  its own timeline and tears down its RAF/observer/listeners on unmount.
+- **Imports** — absolute from `src` (e.g. `import { C } from 'theme/tokens'`).
