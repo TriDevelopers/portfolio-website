@@ -1,8 +1,14 @@
 # Tri Ngo — Portfolio
 
+[![Live site](https://img.shields.io/badge/live-tringodev.co-3ee08f?style=flat-square)](https://tringodev.co/)
+[![React](https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
+[![Deploys on Netlify](https://img.shields.io/badge/deploys%20on-Netlify-00c7b7?style=flat-square&logo=netlify&logoColor=white)](https://www.netlify.com/)
+
 A single-page portfolio with a finance-terminal aesthetic: a live "career
 index" candlestick panel, a rotating node-sphere, an append-only experience
 "ledger", an AI-pipeline diagram, and an animated stack-allocation chart.
+
+**Live:** <https://tringodev.co/>
 
 Built with **React 18** (Create React App). The visual design was prototyped in
 [Claude Design](https://claude.ai/design) and re-implemented here as idiomatic
@@ -74,3 +80,11 @@ src/
 - **Animation** — every canvas/observer/listener lives in a hook that captures
   its own timeline and tears down its RAF/observer/listeners on unmount.
 - **Imports** — absolute from `src` (e.g. `import { C } from 'theme/tokens'`).
+
+## Deployment
+
+Hosted on **Netlify** with continuous deployment from this repo. Every push to
+`master` triggers a build (`npm run build`) and publishes `build/`. Build
+settings live in [`netlify.toml`](./netlify.toml) — Node version, SPA redirect,
+asset caching, and security headers — so the deploy is reproducible and not
+dependent on dashboard configuration.

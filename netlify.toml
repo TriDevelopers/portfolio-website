@@ -1,0 +1,39 @@
+# Netlify configuration (config-as-code) — keeps deploys reproducible
+# instead of relying on dashboard settings that can drift.
+
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  # Pin Node so local and CI builds match (react-scripts 5 is happy on 20 LTS).
+  NODE_VERSION = "20"
+  # CRA treats warnings as errors when CI=true; keep warnings non-fatal on deploy.
+  CI = "false"
+
+# Single-page app: serve index.html for any unknown path instead of a hard 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Fingerprinted build assets never change — cache them aggressively.
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# The HTML shell must never be cached, so new deploys show up immediately.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Baseline security headers for a static site.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
